@@ -1,0 +1,35 @@
+# FastAPI AI Service - Dependencies
+# Smart Food Donation and Redistribution Platform
+
+# Web framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+# Required by the /analyze_image endpoint (UploadFile/File form parsing).
+# Without this, the app crashes on startup with:
+#   RuntimeError: Form data requires "python-multipart" to be installed.
+python-multipart>=0.0.9
+
+# Data validation
+pydantic>=2.9.2
+pydantic-settings>=2.5.2
+
+# Data science / ML
+# NOTE: minimum versions only (not pinned with ==) so pip can resolve a
+# wheel for whatever Python version is installed. numpy==1.26.4 (the old
+# pin) has no wheel for Python 3.13+ and pip would try to compile it from
+# source, which fails/hangs on machines without build tools. If the
+# bundled model/trained_model.pkl can't be unpickled against whatever
+# version resolves here, the service automatically retrains a fresh
+# baseline model on startup (see app/models/model.py), so relaxing these
+# pins is safe.
+numpy>=1.26.4
+pandas>=2.2.3
+scikit-learn>=1.5.2
+joblib>=1.4.2
+
+# Environment variables
+python-dotenv>=1.0.1
+
+# CORS middleware (included in fastapi)
+# HTTP client (for health checks)
+httpx>=0.27.2
