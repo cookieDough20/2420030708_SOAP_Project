@@ -79,3 +79,9 @@ PROJECT_DOCUMENTATION.md  Architecture & data-flow reference
   without a token if called directly. This doesn't block normal use through the
   UI, but don't treat this as a secured deployment as-is.
 - CORS is wide open (`*`) at the gateway for local development convenience.
+
+## Team Members
+
+- Anahita Bhalme
+- Hitheshini Kola
+- Mihika Chowdary
